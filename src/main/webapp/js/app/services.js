@@ -2,7 +2,7 @@
 
 var zenContactServices = angular.module('zenContact.services', []);
 
-zenContactServices.constant("zenVersion", "v0");
+zenContactServices.constant("zenVersion", "v1");
 zenContactServices.service('contactService', function ($http, zenVersion) {
     this.getAllContacts = function (callback) {
         $http.get('/api/' + zenVersion + '/users').success(function (contacts) {
