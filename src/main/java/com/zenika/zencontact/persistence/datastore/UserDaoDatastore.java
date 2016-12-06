@@ -31,7 +31,7 @@ public class UserDaoDatastore implements UserDao {
     public long save(User contact) {
         Entity e = new Entity("User");
         if (contact.id != null) {
-            Key k = KeyFactory.createKey("user",contact.id);
+            Key k = KeyFactory.createKey("User",contact.id);
             try{
                 e = datastore.get(k);
             } catch(EntityNotFoundException ex){}
