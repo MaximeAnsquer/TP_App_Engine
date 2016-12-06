@@ -1,0 +1,78 @@
+<div my-hero-unit>Edit a contact</div>
+<div class="row">
+    <div class="span12">
+        <div class="well">
+            <h2>Edit contact</h2>
+
+            <form action="" method="post" class="form-horizontal" name="contactForm">
+                <div class="control-group {{!contactForm.firstName.$error.required || 'error'}}">
+                    <label for="firstName" class="control-label">First name</label>
+
+                    <div class="controls">
+                        <input type="text" name="firstName" id="firstName" class="input-xlarge" data-ng-model="contact.firstName" required=""/><br/>
+                        <span class="help-inline" data-ng-show="contactForm.firstName.$error.required">Required</span>
+                    </div>
+                </div>
+                <div class="control-group {{!contactForm.lastName.$error.required || 'error'}}">
+                    <label for="lastName" class="control-label">Last name</label>
+
+                    <div class="controls">
+                        <input type="text" name="lastName" id="lastName" class="input-xlarge" data-ng-model="contact.lastName" required=""/><br/>
+                        <span class="help-inline" data-ng-show="contactForm.lastName.$error.required">Required</span>
+                    </div>
+                </div>
+                <div class="control-group {{!contactForm.email.$error.required || 'error'}}">
+                    <label for="email" class="control-label">Email</label>
+
+                    <div class="controls">
+                        <input type="text" name="email" id="email" class="input-xlarge" data-ng-model="contact.email" required=""/><br/>
+                        <span class="help-inline" data-ng-show="contactForm.email.$error.required">Required</span>                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="notes" class="control-label">Notes</label>
+
+                    <div class="controls">
+                        <textarea rows="3" name="notes" id="notes" class="input-xlarge" data-ng-model="contact.notes"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="Save" class="btn btn-primary" data-ng-click="saveContact(contact)" data-ng-disabled="contactForm.$invalid"/>
+                        <a href="#/list" class="btn btn-link">Cancel</a>
+                        <button class="btn btn-danger" data-ng-click="deleteContact(contact)">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="row">
+    <div class="span12">
+        <div class="well">
+            <h2>Edit contact</h2>
+            <form class="form-group"
+                  ng-upload="afterUpload(content)"
+                  action="{{contact.uploadUrl}}"
+                  name="fichierForm"
+                  ng-show="openedForm"
+                  novalidate>
+                <h4 class="col-sm-offset-3 padding-left-10">{{buttonLabel}}</h4>
+                <input type="hidden" name="userId" value="{{userId}}"/>
+                <label class="col-sm-3 control-label" for="{{type+'File'}}">{{itemLabel}}</label>
+
+                <div class="col-sm-9 form-control-static">
+                    <input class="margin-bottom-4" type="file" name="file" id ="{{type+'File'}}" fileread="uploadFile" accept="{{accept}}"/>
+                    
+                    <button type="submit" class="btn btn-warning-inverse" ng-class="{'disabled': iconRefreshAnimate}">
+                        <span ng-hide="iconRefreshAnimate">Valider</span>
+                        <i class="glyphicon glyphicon-refresh ng-hide"
+                           ng-class="{'icon-refresh-animate':iconRefreshAnimate}"
+                           ng-show="iconRefreshAnimate">
+                        </i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
