@@ -22,7 +22,7 @@ public class User implements Serializable {
     public Date birthdate;
     @Unindex
     public String notes;
-    public BlobKey cvKey; // points to the blobstore entry if any
+    public BlobKey photoKey; // points to the blobstore entry if any
 
     @Ignore
     public String uploadURL;
@@ -73,8 +73,8 @@ public class User implements Serializable {
         return this;
     }
 
-    public User cvKey(BlobKey cvKey) {
-        this.cvKey = cvKey;
+    public User photoKey(BlobKey photoKey) {
+        this.photoKey = photoKey;
         return this;
     }
 

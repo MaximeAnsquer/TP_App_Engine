@@ -46,33 +46,21 @@
         </div>
     </div>
 </div>
-<!-- 
+
 <div class="row">
     <div class="span12">
         <div class="well">
-            <h2>Edit contact</h2>
+            <h2>Add File</h2>
             <form class="form-group"
-                  ng-upload="afterUpload(content)"
-                  action="{{contact.uploadUrl}}"
-                  name="fichierForm"
-                  ng-show="openedForm"
+                  name="upload"
                   novalidate>
-                <h4 class="col-sm-offset-3 padding-left-10">{{buttonLabel}}</h4>
-                <input type="hidden" name="userId" value="{{userId}}"/>
-                <label class="col-sm-3 control-label" for="{{type+'File'}}">{{itemLabel}}</label>
 
                 <div class="col-sm-9 form-control-static">
-                    <input class="margin-bottom-4" type="file" name="file" id ="{{type+'File'}}" fileread="uploadFile" accept="{{accept}}"/>
-                    
-                    <button type="submit" class="btn btn-warning-inverse" ng-class="{'disabled': iconRefreshAnimate}">
-                        <span ng-hide="iconRefreshAnimate">Valider</span>
-                        <i class="glyphicon glyphicon-refresh ng-hide"
-                           ng-class="{'icon-refresh-animate':iconRefreshAnimate}"
-                           ng-show="iconRefreshAnimate">
-                        </i>
-                    </button>
+                	<a href="{{contact.downloadURL}}" target="_blank" ng-show="contact.downloadURL">Download the file</a>
+                    <br/><br/>
+                    <div class="button btn btn-primary" ngf-select ngf-change="uploadContactFile($files)">Select File</div>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+</div>

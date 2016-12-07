@@ -2,6 +2,7 @@ package com.zenika.zencontact.resource;
 
 import com.google.common.base.Optional;
 import com.zenika.zencontact.domain.User;
+import com.zenika.zencontact.domain.blob.PhotoService;
 import com.zenika.zencontact.persistence.objectify.UserDaoObjectify;
 import restx.annotations.*;
 import restx.factory.Component;
@@ -21,6 +22,8 @@ public class UserObjectifyResource {
   @PermitAll
   public Optional<User> getUser(final Long id) {
     User user = UserDaoObjectify.getInstance().get(id);
+    PhotoService.getInstance().prepareDownloadURL(user);
+    PhotoService.getInstance().prepareUploadURL(user);
     return Optional.fromNullable(user);
   }
 
