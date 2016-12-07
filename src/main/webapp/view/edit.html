@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" ng-show="contact.uploadURL">
     <div class="span12">
         <div class="well">
             <h2>Add File</h2>
@@ -56,9 +56,38 @@
                   novalidate>
 
                 <div class="col-sm-9 form-control-static">
-                	<a href="{{contact.downloadURL}}" target="_blank" ng-show="contact.downloadURL">Download the file</a>
+                    <a href="{{contact.downloadURL}}" target="_blank" ng-show="contact.downloadURL">Download the file</a>
                     <br/><br/>
                     <div class="button btn btn-primary" ngf-select ngf-change="uploadContactFile($files)">Select File</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="contact.email">
+    <div class="span12">
+        <div class="well">
+            <h2>Send an email</h2>
+
+            <form action="" method="post" class="form-horizontal" name="emailForm">
+                <div class="control-group">
+                    <label for="subject" class="control-label">Subject</label>
+
+                    <div class="controls">
+                        <input type="text" name="subject" id="subject" class="input-xlarge" data-ng-model="email.subject" required=""/><br/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="body" class="control-label">Body</label>
+
+                    <div class="controls">
+                        <textarea rows="3" name="body" id="body" class="input-xlarge" data-ng-model="email.body"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="Send" class="btn btn-primary" data-ng-click="sendEmail(contact)" />
+                    </div>
                 </div>
             </form>
         </div>
