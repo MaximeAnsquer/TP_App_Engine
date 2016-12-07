@@ -1,7 +1,10 @@
 package com.zenika.zencontact.resource;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.zenika.zencontact.fetch.PartnerBirthdayService;
 import restx.annotations.DELETE;
 import restx.annotations.GET;
 import restx.annotations.POST;
@@ -72,10 +75,23 @@ public class UserObjectifyResource {
   @POST("/v2/users")
   @PermitAll
   public User storeUser(final User user) {
-    cache.delete(CONTACTS_CACHE_KEY);
-    if (Strings.isNullOrEmpty(user.password)) {
-      user.password = "azerty";
+    cache.delete(CONTACTS_CACHE_KEY) ;
+
+    if (user.birthdate == null) {
+      String birthdate = PartnerBirthdayService
+        .getInstance()
+        .findBirthdate(user.firstName, user.lastName);
+      if (birthdate != null) {
+        try {
+          user.birthdate(new SimpleDateFormat("yyyy-MM-dd")
+            .parse(birthdate));
+        }
+        catch (ParseException e) {
+
+        }
+      }
     }
+
     if (user.id == null) {
       user.id(UserDaoObjectify.getInstance().save(user));
     }
